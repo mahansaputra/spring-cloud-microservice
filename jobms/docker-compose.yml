@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_ms
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=job
+    ports:
+      - '5434:5432'
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container_ms
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
+    container_name: zipkin
+    environment:
+      - HEALTHCHECK_IP=127.0.0.1
+#      - STORAGE_TYPE=mem
+      # Uncomment to enable self-tracing
+      # - SELF_TRACING_ENABLED=true
+      # Uncomment to increase heap size
+      # - JAVA_OPTS=-Xms128m -Xmx128m -XX:+ExitOnOutOfMemoryError
+    ports:
+      # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411
+    # Uncomment to enable debug logging
+    # command: --logging.level.zipkin2=DEBUG
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      #Default port for Rabbitmq
+      - 5672:5672
+      #Default port for Rabbitmq management
+      - 15672:15672
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  local_pgdata:
+  pgadmin-data:

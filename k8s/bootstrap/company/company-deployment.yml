@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: company
+spec:
+  selector:
+    matchLabels:
+      app: company
+  template:
+    metadata:
+      labels:
+        app: company
+    spec:
+      containers:
+        - name: company
+          image: mahansa/companyms:latest
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
+      restartPolicy: Always

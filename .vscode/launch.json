@@ -1,0 +1,65 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceRegApplication<service-reg>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.servicereg.ServiceRegApplication",
+            "projectName": "service-reg",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayApplication<gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.gateway.GatewayApplication",
+            "projectName": "gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ConfigServerApplication<ConfigServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.configserver.ConfigServerApplication",
+            "projectName": "ConfigServer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CompanymsApplication<companyms>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.companyms.CompanymsApplication",
+            "projectName": "companyms",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=56175 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=companyms"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-JobmsApplication<jobms>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.jobms.JobmsApplication",
+            "projectName": "jobms",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ReviewmsApplication<reviewms>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mahansa.reviewms.ReviewmsApplication",
+            "projectName": "reviewms",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
